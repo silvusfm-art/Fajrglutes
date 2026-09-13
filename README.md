@@ -1,6 +1,9 @@
-# Fajr Glute Day 🍑
-موقع عربي خفيف ومضحك ليوم تمارين المؤخرة، جاهز لـ GitHub Pages.
+# Fajr Gym
+نسخة مخصصة للرفع من الجوال: جميع الملفات والصور توضع مباشرة في جذر الريبو، بدون مجلد assets.
 
-## النشر
-ارفع `index.html` و`style.css` و`script.js` إلى جذر الريبو، ثم:
-Settings → Pages → Deploy from a branch → main → /(root)
+ارفع/استبدل:
+- index.html
+- style.css
+- script.js
+
+والصور الخمس الموجودة أصلًا في الريبو تعمل مباشرة.

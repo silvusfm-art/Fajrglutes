@@ -1,29 +1,26 @@
+let step=0,looks=0,outfit="وردي";
 const stages=[
-["🔥 إحماء","صحّي العضلة أول",`إحماء وتنشيط بسيط. وبالمناسبة: <b>وقفي تناظرين في المرآة.</b><br><br>نعم، نعرف أنها حلوة. نعم، شغل النادي واضح. خذي نظرتك وابدئي. 😭`],
-["🍑 التمرين الأساسي","Hip Thrust — نشتغل على التحفة",`ارفعي بتحكم، اثبتي فوق وانزلي بهدوء. إحنا مو نبني من الصفر؛ إحنا نطوّر شيء <b>جميل وممتلئ ومرسوم من الأساس.</b><br><br>إذا استمريتي بهذا المستوى، قريب بنحتاج نكبّر الموقع عشان يستوعب حجم مؤخرتك. 😭`],
-["✨ تحكم وتمدد","RDL — الرسمة قاعدة تكتمل",`نزول هادئ وتكنيك مضبوط. هنا يبان التناسق بين <b>خصرك ومؤخرتك وفخوذك</b>. ممتلئة، مستديرة، وشغل النادي واضح عليها.<br><br>بس النظر لها بعد كل مجموعة ما يكبرها يا دلوعة، التمرين هو اللي يسوي الشغل.`],
-["🦵 ادفعي الفاتورة","Bulgarian Split Squat",`هنا ما فيه دلع. أنتِ اللي تبينها أقوى وأجمل وأكثر امتلاءً، والحين جاء وقت دفع الفاتورة.<br><br>إذا حرق؟ ممتاز. <b>هذا صوت المشروع وهو يتطور.</b>`],
-["🍑 النهاية","Abduction — آخر حرق",`آخر مرحلة. تحكمي بالحركة ولا ترمين الوزن. وهنا مسموح نظرة سريعة للمراية… <b>قلت سريعة يا فجر، مو جلسة تصوير.</b> 😭`]
-];
-const compliments=[
-"مؤخرتك مستديرة وممتلئة بشكل جميل، وشغل النادي واضح عليها.",
-"التناسق بينها وبين خصرك وفخوذك هو اللي يخلي شكلها مرسوم فعلًا.",
-"جسم نادي قوي، لكن بانحناءات ناعمة وواضحة — تركيبة ناجحة جدًا.",
-"إيه يا فجر، ما زالت حلوة. ما يحتاج تتأكدين من المرآة كل دقيقتين. 😭",
-"واضح إن Leg Day أدى الأمانة، والنتيجة قاعدة تتكلم عن نفسها.",
-"مسموح تكونين فخورة فيها… بس كملي المجموعة أول يا ملكة. 👑"
-];
-let stage=0,sets=0,mirrors=0;
-const $=id=>document.getElementById(id);
-function render(){
- if(stage>=stages.length){$("game").classList.add("hidden");$("finish").classList.remove("hidden");return}
- $("tag").textContent=stages[stage][0];$("title").textContent=stages[stage][1];$("copy").innerHTML=stages[stage][2];
- const p=Math.round(stage/stages.length*100);$("progress").textContent=p+"%";$("bar").style.width=p+"%";$("sets").textContent=sets;$("mirrors").textContent=mirrors;
- $("message").classList.remove("show");$("weight").value="";$("reps").value="";
+["🔥 البداية","إحماء وتنشيط","صحّي الأرجل أول. حركة مرتبة وبعدين نبدأ الشغل الحقيقي.","fajr-sitting.png"],
+["🍑 الشغل الأساسي","Hip Thrust","ارفعي بتحكم واثبتي فوق. مجلس إدارة المكوة يطلب جودة بالتنفيذ، مو عدات والسلام. 😭","fajr-main.png"],
+["✨ تحكم","RDL","نزول هادئ وظهر ثابت. هنا يبان شغل الرجلين والتناسق الحلو بين خصرك وفخوذك. خلصنا المدح، كملي.","fajr-pose.png"],
+["🍑 ركزي","Kick Back","كل عدة استثمار إضافي في مكوتك. الاستثمار أصلًا ناجح، بس واضح إن الآنسة فجر طماعة وتبيها أحلى. 😭","fajr-mirror.png"],
+["🔥 آخر حرق","Abduction","آخر مرحلة. تحكمي بالحركة. وبعدها مسموح نظرة سريعة للمراية… سريعة يا فجر، مو جلسة تصوير.","fajr-squat.png"]];
+function show(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(id).classList.add("on");scrollTo(0,0)}
+function pick(c,e){outfit=c;document.getElementById("outfitMsg").textContent=e+" "+({وردي:"الوردي؟ جاية تتمرنين وتسوين مشاكل بنفس الوقت. 😭",أسود:"الأسود؟ واضح اليوم الأوزان هي اللي لازم تخاف. 🖤",أبيض:"الأبيض؟ بريئة بالأوتفيت فقط. 🤍"}[c])}
+function start(){step=0;looks=0;show("workout");render()}
+function render(){let s=stages[step];tag.textContent=s[0];title.textContent=s[1];copy.textContent=s[2];pic.src=""+s[3];count.textContent=(step+1)+" / "+stages.length;bar.style.width=(step/stages.length*100)+"%";msg.classList.add("hide")}
+function done(){
+  step++;
+  if(step>=stages.length){
+    const finishText=document.querySelector("#finish .finish");
+    finishText.innerHTML=`<span>🏆 خلصنا</span>
+      <h2>أحسنتِ يا فجر</h2>
+      <p>الفخوذ أخذت حقها، العضلات اشتغلت، و<strong>المكوة</strong> أخذت استثمارها اليومي بنجاح. 🍑</p>
+      <p>جسمك الرياضي مرتب وشغل الأرجل واضح عليك. والحين بعد كل هالشغل نقدر نعتمد النتيجة رسميًا:</p>
+      <div class="msg"><strong>💋 فحص الجودة النهائي:</strong><br>أيوه… الآن المكوة مناسبة للتبويس. اعتماد رسمي بعد التمرين. 😭🍑</div>
+      <p>الحين روحي كلي ولا توقفين عند المراية وتنسين الوجبة.</p>`;
+    show("finish");
+  } else render();
 }
-$("start").onclick=()=>{$("game").classList.remove("hidden");$("start").closest(".hero").classList.add("hidden");render();scrollTo({top:0,behavior:"smooth"})};
-$("done").onclick=()=>{sets++;stage++;render()};
-$("mirror").onclick=()=>{mirrors++;$("mirrors").textContent=mirrors;let m=mirrors<3?"إيه، لسه جميلة ومستديرة وممتلئة. مبسوطة؟ الحين ارجعي للتمرين. 😭":`هذه النظرة رقم ${mirrors}. يا فجر خلاص، ما راح تكبر خلال دقيقتين! خذي نظرتك وارجعي للمجموعة. 💀`; $("message").innerHTML=m;$("message").classList.add("show")};
-$("lazy").onclick=()=>{const a=["لا يا دلوعة. أنتِ اللي تبين النتيجة، كملي العدات. 😭","طلب الاستسلام مرفوض. خذي نفس وكملي.","كل هذا المدح وبعدين تقولين مالي خلق؟ مستحيل. 🍑"];$("message").textContent=a[Math.floor(Math.random()*a.length)];$("message").classList.add("show")};
-$("praise").onclick=()=>{$("compliment").textContent=compliments[Math.floor(Math.random()*compliments.length)]};
-$("reset").onclick=()=>location.reload();
+function mirror(){looks++;msg.textContent=looks<3?"إيه، للحين حلوة. المكوة ما اختفت من آخر مجموعة. ارجعي تمرني. 😭":"هذه النظرة رقم "+looks+". مكوتك ما راح تكبر خلال دقيقتين يا فجر. 💀";msg.classList.remove("hide")}
+function lazy(){msg.textContent=["طلب الدلع وصل وتم رفضه. كملي. 😭","أنتِ اللي اخترتي يوم الأرجل، تحملي قراراتك.","خذي نفس واشربي موية وكملي يا معضّلة. 💪"][Math.floor(Math.random()*3)];msg.classList.remove("hide")}
