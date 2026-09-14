@@ -1,9 +1,3 @@
-# Fajr Gym
-نسخة مخصصة للرفع من الجوال: جميع الملفات والصور توضع مباشرة في جذر الريبو، بدون مجلد assets.
+Fajr Gym — Leg Day + Chest & Triceps
 
-ارفع/استبدل:
-- index.html
-- style.css
-- script.js
-
-والصور الخمس الموجودة أصلًا في الريبو تعمل مباشرة.
+GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root)
