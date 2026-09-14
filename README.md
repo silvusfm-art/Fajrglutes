@@ -1,3 +1,3 @@
-Fajr Gym — Leg Day + Chest & Triceps
+Fajr Gym — original design + Leg Day + Chest & Triceps
 
-GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root)
+Replace the files in the existing Fajrglutes repository root, then commit.
