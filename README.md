@@ -1,3 +1,7 @@
-Fajr Gym — original design + Leg Day + Chest & Triceps
+Fajr Gym — Leg Day + Chest & Triceps
 
-Replace the files in the existing Fajrglutes repository root, then commit.
+Cache-busting enabled:
+- style.css?v=3
+- script.js?v=3
+
+Upload all files to the root of the existing Fajrglutes repository and commit.
